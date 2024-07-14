@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Characteristics and Seed Genetics by Climate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+        }
+        .input-section, .output-section {
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        .input-section {
+            background-color: #f0f0f0;
+        }
+        .output-section {
+            background-color: #fff;
+        }
+        .output-section h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-section">
+        <h2>Input Temperature and Climatic Conditions</h2>
+        <div class="form-group">
+            <label for="temperature">Temperature (&deg;C)</label>
+            <input type="number" id="temperature" name="temperature" placeholder="Enter temperature">
+        </div>
+        <div class="form-group">
+            <label for="humidity">Humidity (%)</label>
+            <input type="number" id="humidity" name="humidity" placeholder="Enter humidity">
+        </div>
+        <div class="form-group">
+            <label for="precipitation">Precipitation (mm/month)</label>
+            <input type="number" id="precipitation" name="precipitation" placeholder="Enter precipitation">
+        </div>
+        <button onclick="calculateCharacteristics()">Calculate</button>
+    </div>
+    <div class="output-section">
+        <h2>Plant Characteristics and Seed Genetics</h2>
+        <p id="characteristics-info">Enter temperature and climatic conditions above to see plant characteristics and genetic properties of seeds.</p>
+    </div>
+
+    <script>
+        function calculateCharacteristics() {
+            // Retrieve input values
+            var temperature = parseFloat(document.getElementById("temperature").value);
+            var humidity = parseFloat(document.getElementById("humidity").value);
+            var precipitation = parseFloat(document.getElementById("precipitation").value);
+
+            // Check if conditions are suitable
+            if (isNaN(temperature) || isNaN(humidity) || isNaN(precipitation)) {
+                document.getElementById("characteristics-info").innerHTML = "Please enter valid numerical values for temperature, humidity, and precipitation.";
+                return;
+            }
+
+            // Define ideal growing ranges
+            var idealTemperatureRange = "10°C - 35°C";
+            var idealHumidityRange = "40% - 80%";
+            var idealPrecipitationRange = "50 mm/month - 200 mm/month";
+
+            // Display ideal growing ranges
+            var info = "Ideal Growing Ranges:<br>";
+            info += "Temperature: " + idealTemperatureRange + "<br>";
+            info += "Humidity: " + idealHumidityRange + "<br>";
+            info += "Precipitation: " + idealPrecipitationRange + "<br><br>";
+
+            // Check if conditions are within ideal ranges
+            if (temperature < 10 || temperature > 35 || humidity < 40 || humidity > 80 || precipitation < 50 || precipitation > 200) {
+                info += "Conditions are not suitable for plant growth.";
+            } else {
+                // Example plant characteristics
+                info += "Example Plant Characteristics:<br>";
+                info += "Height: 2 meters<br>";
+                info += "Weight: 5 kg<br>";
+                info += "Color: Green<br>";
+                info += "Fruit-bearing Capacity: High<br><br>";
+
+                // Example genetic properties of seeds
+                info += "Genetic Properties of Seeds:<br>";
+                var seedCode = generateSeedCode(temperature, humidity, precipitation);
+                info += "Seed Code: " + seedCode + "<br>";
+                info += "Variety: XYZ<br>";
+                info += "Genetic Traits: Disease resistance, high yield<br>";
+            }
+
+            // Display information in output section
+            document.getElementById("characteristics-info").innerHTML = info;
+        }
+
+        // Function to generate seed code based on temperature, humidity, and precipitation values
+        function generateSeedCode(temp, hum, prec) {
+            var code = "T" + temp + "H" + hum + "P" + prec;
+            return code;
+        }
+    </script>
+</body>
+</html>
