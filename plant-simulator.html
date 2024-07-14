@@ -6,6 +6,12 @@
     <title>Enhanced Virtual Plant Model</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -13,15 +19,16 @@
             padding: 0;
             background-color: #f0f0f0;
         }
-        
+        /* Navbar Styles */
         .navbar {
             background-color: #2e7d32;
             padding: 10px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
+            text-align: center;
         }
-
         .navbar ul {
             list-style-type: none;
             margin: 0;
@@ -29,25 +36,23 @@
             display: flex;
             justify-content: center;
         }
-
         .navbar li {
             margin: 0 15px;
         }
-
         .navbar a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1em;
         }
-        
+        /* Header Styles */
         header {
             background-color: #1b5e20;
             color: #fff;
             text-align: center;
             padding: 20px 0;
         }
-        
+        /* Container Styles */
         .container {
             width: 90%;
             max-width: 1200px;
@@ -57,31 +62,29 @@
             border-radius: 8px;
             padding: 20px;
         }
-        
+        /* Plant Simulation Styles */
         #plant-simulation {
             width: 100%;
             height: 500px;
             margin-bottom: 20px;
         }
-        
+        /* Environment Controls Styles */
         #environment-controls {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin-top: 10px;
         }
-        
         .control-group {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 10px;
         }
-        
         .control-group input {
             width: 200px;
         }
-
+        /* Button Styles */
         button {
             background-color: #4CAF50;
             border: none;
@@ -95,6 +98,135 @@
             cursor: pointer;
             border-radius: 4px;
         }
+        /* Responsive Styles */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            #plant-simulation {
+                height: 300px;
+            }
+        }
+        @media only screen and (max-width: 480px) {
+            .container {
+                width: 98%;
+            }
+            #plant-simulation {
+                height: 200px;
+            }
+        }
+
+
+        /* Add these styles to your CSS file */
+
+/* Make the container full-width on small screens */
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Make the plant simulation canvas full-width on small screens */
+@media only screen and (max-width: 480px) {
+    #plant-simulation {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* Make the environment controls flexbox on small screens */
+@media only screen and (max-width: 480px) {
+    #environment-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .control-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .control-group input {
+        width: 100%;
+    }
+}
+
+/* Make the buttons full-width on small screens */
+@media only screen and (max-width: 480px) {
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Add these styles to your CSS file */
+
+/* Make the container full-width on small screens */
+@media only screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Make the plant simulation canvas full-width on small screens */
+@media only screen and (max-width: 480px) {
+    #plant-simulation {
+        width: 100%;
+        height: 30vh; /* Use viewport height instead of fixed height */
+    }
+}
+
+/* Make the environment controls flexbox on small screens */
+@media only screen and (max-width: 480px) {
+    #environment-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .control-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .control-group input {
+        width: 100%;
+    }
+}
+
+/* Make the buttons full-width on small screens */
+@media only screen and (max-width: 480px) {
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Add padding to the body for better readability */
+body {
+    padding: 20px;
+}
+
+/* Make the header font size smaller on small screens */
+@media only screen and (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* Make the navbar font size smaller on small screens */
+@media only screen and (max-width: 480px) {
+    .navbar a {
+        font-size: 1em;
+    }
+}
+
+/* Make the input range elements full-width */
+#environment-controls input[type="range"] {
+    width: 100%;
+}
+
+/* Add some margin to the buttons */
+button {
+    margin: 10px 0;
+}
     </style>
 </head>
 <body>
